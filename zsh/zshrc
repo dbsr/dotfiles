@@ -55,7 +55,6 @@ autoload -U edit-command-line && zle -N edit-command-line
 autoload -U url-quote-magic && zle -N self-insert url-quote-magic
 autoload -U select-word-style && select-word-style bash
 autoload -U zmv
-zle -N hst
 # Keybindings
 bindkey -e # Emacs style keys in shell
 bindkey '^xe' edit-command-line
@@ -63,7 +62,6 @@ bindkey '^x^e' edit-command-line
 bindkey "\e[3~" delete-char # Del
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey '^R' hst
 # Stuff
 setopt pushd_ignore_dups; setopt auto_pushd
 setopt auto_name_dirs; setopt auto_cd
