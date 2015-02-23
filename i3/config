@@ -101,6 +101,9 @@ bindsym Mod1+Shift+s exec spotify
 # phpstorm
 bindsym Mod1+Shift+e exec phpstorm
 
+# hipchat
+bindsym Mod1+Shift+v exec hipchat
+
 
 ##
 # WORKSPACES
