@@ -1,0 +1,48 @@
+[options]
+resize_grip         = false
+scroll_on_output    = false
+scroll_on_keystroke = true
+audible_bell        = false
+visible_bell        = false
+mouse_autohide      = false
+dynamic_title       = true
+urgent_on_bell      = true
+clickable_url       = true
+allow_bold          = false
+font                = Droid Sans Mono for Powerline 11
+
+scrollback_lines    = 4000
+icon_name           = terminal
+transparency        = 0.4
+cursor_blink        = off
+cursor_shape        = block
+
+
+[colors]
+background = #272822
+
+# black
+color0 = #272822
+color8 = #272822
+# red
+color1  = #f92672
+color9  = #ff5995
+# green
+color2  = #46830c
+color10 = #46830c
+# yellow
+color3  = #e6db74
+color11  = #e6db74
+# blue
+color4  = #5f87af
+color12  = #5f87af
+# magenta
+color5  = #f92672
+color13  = #f92672
+# cyan
+color6  = #66d9ef
+color14 = #66d9ef
+# white
+color7  = #ccccc6
+
+# vim: ft=dosini

@@ -1,0 +1,239 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:Droid Sans Mono for Powerline 10
+font pango:Dejavu Sans Mono for Powerline 10
+# Before i3 v4.8, we used to recommend this one as the default:
+# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# The font above is very space-efficient, that is, it looks good, sharp and
+# clear in small sizes. However, its unicode glyph coverage is limited, the old
+# X core fonts rendering does not support right-to-left and this being a bitmap
+# font, it doesn’t scale on retina/hidpi displays.
+
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# start a terminal
+
+# kill focused window
+bindsym Mod1+q kill
+
+# start dmenu (a program launcher)
+bindsym Mod1+Shift+d exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym Mod1+$left focus left
+bindsym Mod1+$down focus down
+bindsym Mod1+$up focus up
+bindsym Mod1+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Right focus right
+
+# move focused window
+bindsym Mod1+Shift+$left move left
+bindsym Mod1+Shift+$down move down
+bindsym Mod1+Shift+$up move up
+bindsym Mod1+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod1+Shift+Left move left
+bindsym Mod1+Shift+Down move down
+bindsym Mod1+Shift+Up move up
+bindsym Mod1+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod1+h split h
+
+# split in vertical orientation
+
+# enter fullscreen mode for the focused container
+bindsym Mod1+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod1+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod1+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod1+a focus parent
+
+# focus the child container
+#bindsym Mod1+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym Mod1+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod1+minus scratchpad show
+
+# switch to workspace
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
+# exit i3 (logs you out of your X session)
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+# These bindings trigger as soon as you enter the resize mode
+
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+  bindsym $left       resize shrink width 10 px or 10 ppt
+    bindsym $down       resize grow height 10 px or 10 ppt
+    bindsym $up         resize shrink height 10 px or 10 ppt
+    bindsym $right      resize grow width 10 px or 10 ppt
+
+# same bindings, but for the arrow keys
+    bindsym Left        resize shrink width 10 px or 10 ppt
+    bindsym Down        resize grow height 10 px or 10 ppt
+    bindsym Up          resize shrink height 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
+
+# back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Mod1+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+set $WORKSPACE_TERM "term"
+set $WORKSPACE_WWW "www"
+set $WORKSPACE_VIM "vim"
+set $WORKSPACE_MEDIA "media"
+set $WORKSPACE_GIMP "gimp"
+set $WORKSPACE_SPOTIFY "spotify"
+set $WORKSPACE_WINE "wine"
+set $WORKSPACE_MAIL  "mail"
+set $WORKSPACE_JIRA "jira"
+set $WORKSPACE_VNC "vnc"
+
+workspace $WORKSPACE_SPOTIFY output VGA1
+workspace $WORKSPACE_WWW output HDMI2
+
+bindsym Mod1+1 workspace $WORKSPACE_TERM
+bindsym Mod1+2 workspace $WORKSPACE_WWW
+bindsym Mod1+e workspace $WORKSPACE_VIM
+bindsym Mod1+x workspace $WORKSPACE_MEDIA
+bindsym Mod1+g workspace $WORKSPACE_GIMP
+bindsym Mod1+s workspace $WORKSPACE_SPOTIFY
+bindsym Mod1+4 workspace $WORKSPACE_WINE
+bindsym Mod1+5 workspace $WORKSPACE_MAIL
+bindsym Mod1+0 workspace $WORKSPACE_JIRA
+bindsym Mod1+w workspace $WORKSPACE_WIRESHARK
+bindsym Mod1+v workspace $WORKSPACE_VNC
+
+bindsym Mod1+Shift+Return exec termite
+bindsym Mod1+Return exec termite --name ws_term
+bindsym Mod1+Shift+2 exec firefox
+bindsym Mod1+Shift+x exec xbmc
+bindsym Mod1+Shift+g exec gimp
+bindsym Mod1+Shift+s exec spotify
+bindsym Mod1+Shift+5 exec thunderbird
+bindsym Mod1+Shift+0 exec sh ~/.util/jira_launch
+bindsym Mod1+Shift+v exec vinagre
+
+
+assign [instance="ws_term"] $WORKSPACE_TERM
+assign [instance="Termite"] $WORKSPACE_TERM
+assign [class="[Gg]vim"] $WORKSPACE_VIM
+assign [instance=".*firefox_jira"] $WORKSPACE_JIRA
+assign [class="firefox|Opera|Safari|Explorer|Firefox"] $WORKSPACE_WWW
+assign [class="xbmc"] $WORKSPACE_MEDIA
+assign [class="Gimp"] $WORKSPACE_GIMP
+assign [class="Spotify"] $WORKSPACE_SPOTIFY
+assign [class="Thunderbird"] $WORKSPACE_MAIL
+assign [class="wine|Wine"] $WORKSPACE_WINE
+assign [class="Wireshark|wireshark"] $WORKSPACE_WIRESHARK
+assign [class="Vinagre|VirtualBox"] $WORKSPACE_VNC
+assign [class="Skype"] $WORKSPACE_MAIL
+assign [class="jetbrains-phpstorm"] $WORKSPACE_VIM
+
+
+
+workspace $WORKSPACE_VIM output HDMI2
+workspace $WORKSPACE_WWW output VGA1
+workspace $WORKSPACE_VNC output VGA1
+workspace $WORKSPACE_SPOTIFY output VGA1
+workspace $WORKSPACE_TERM output HDMI2
+workspace $WORKSPACE_JIRA output VGA1
+workspace $WORKSPACE_WIRESHARK output VGA1
+
+for_window [class="xbmc|vlc|spotify"] floating
+
+new_window pixel 1
+
+
+set $COLOR_BG_PRIMARY   #282828
+set $COLOR_BG_SECONDARY   #282828
+
+set $COLOR_FG_PRIMARY     #aaaaaa
+
+set $COLOR_ACCENT #444444
+
+
+#                       border                bg                    txt                   ind
+
+client.focused          $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY     $COLOR_FG_PRIMARY 
+#client.focused_inactive #268bd2       #268bd2   #fdf6e3           #484e50
+#client.unfocused        #333333       $C_BG_ACCENT #fdf6e3           #292d2e
+#client.urgent           $C_BG         $C_URGENT #fdf6e3           #2929D2
+
+bar {
+  font pango:Dejavu Sans Mono for Powerline, FontAwesome 10
+  status_command i3blocks -c $HOME/.config/i3/i3blocks.conf -d $HOME/.config/i3/blocks
+  position top
+    colors {
+    background $COLOR_BG_PRIMARY
+    statusline $COLOR_FG_PRIMARY
+    focused_workspace     $COLOR_ACCENT       $COLOR_ACCENT $COLOR_FG_PRIMARY
+    active_workspace      $COLOR_BG_PRIMARY   $COLOR_BG_SECONDARY $COLOR_FG_PRIMARY
+    inactive_workspace    $COLOR_BG_PRIMARY $COLOR_BG_PRIMARY $COLOR_FG_PRIMARY
+    urgent_workspace      $COLOR_FG_PRIMARY $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY
+   #   background $C_BG
+    separator $COLOR_FG_PRIMARY
+
+   #   focused_workspace $C_BLUE $C_BLUE $C_TEXT_PRIMARY
+   #   urgent_workspace $C_URGENT $C_URGENT $C_BG
+    }
+}
+
+bindsym Mod1+Up exec amixer -q sset Master 3%+ && killall -USR1 i3blocks
+bindsym Mod1+m exec amixer -q set Master toggle && killall -USR1 i3blocks
+bindsym Mod1+Down exec amixer -q sset Master 3%- unmute && killall -USR1 i3blocks
