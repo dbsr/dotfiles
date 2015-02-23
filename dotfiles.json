@@ -1,0 +1,13 @@
+{
+  "dotfiles": {
+    "zsh": ".zsh",
+    "i3": ".config/i3",
+    "vim": ".vim",
+    "termite": ".config/termite"
+  },
+  "~": {
+    ".zsh/zshrc": ".zshrc",
+    ".zsh/pure/pure.zsh": ".zsh/zfunctions/prompt_pure_setup",
+    ".vim/vimrc": ".vimrc"
+  }
+}

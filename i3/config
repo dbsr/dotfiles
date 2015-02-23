@@ -1,0 +1,146 @@
+# i3 config file dbsr
+
+##
+# STYLE
+#
+
+font pango:Dejavu Sans Mono for Powerline 10
+
+for_window [class="xbmc|vlc|spotify"] floating
+
+new_window pixel 1
+
+set $COLOR_BG_PRIMARY   #282828
+set $COLOR_BG_SECONDARY   #282828
+
+set $COLOR_FG_PRIMARY     #aaaaaa
+
+set $COLOR_ACCENT #444444
+
+client.focused          $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY     $COLOR_FG_PRIMARY 
+#client.focused_inactive #268bd2       #268bd2   #fdf6e3           #484e50
+#client.unfocused        #333333       $C_BG_ACCENT #fdf6e3           #292d2e
+#client.urgent           $C_BG         $C_URGENT #fdf6e3           #2929D2
+
+bar {
+  font pango:Dejavu Sans Mono for Powerline, FontAwesome 10
+  #status_command i3blocks -c $HOME/.config/i3/i3blocks.conf -d $HOME/.config/i3/blocks
+  status_command i3blocks 
+  position top
+    colors {
+    background $COLOR_BG_PRIMARY
+    statusline $COLOR_FG_PRIMARY
+    focused_workspace     $COLOR_ACCENT       $COLOR_ACCENT $COLOR_FG_PRIMARY
+    active_workspace      $COLOR_BG_PRIMARY   $COLOR_BG_SECONDARY $COLOR_FG_PRIMARY
+    inactive_workspace    $COLOR_BG_PRIMARY $COLOR_BG_PRIMARY $COLOR_FG_PRIMARY
+    urgent_workspace      $COLOR_FG_PRIMARY $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY
+   #   background $C_BG
+    separator $COLOR_FG_PRIMARY
+
+   #   focused_workspace $C_BLUE $C_BLUE $C_TEXT_PRIMARY
+   #   urgent_workspace $C_URGENT $C_URGENT $C_BG
+    }
+}
+
+##
+# KEYBINDS
+#
+
+
+# GENERAL
+
+# use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod1
+
+# kill focused window
+bindsym Mod1+q kill
+
+# start dmenu (a program launcher)
+bindsym Mod1+Shift+d exec dmenu_run
+
+# enter fullscreen mode for the focused container
+bindsym Mod1+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod1+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod1+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod1+a focus parent
+
+# reload the configuration file
+bindsym Mod1+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod1+Shift+r restart
+
+# EXECS
+
+# terminal
+bindsym Mod1+Return exec termite --name ws_term
+
+# browser
+bindsym Mod1+Shift+2 exec firefox
+
+# gimp
+bindsym Mod1+Shift+g exec gimp
+
+# mail
+bindsym Mod1+Shift+5 exec thunderbird
+
+# spotify
+bindsym Mod1+Shift+s exec spotify
+
+# phpstorm
+bindsym Mod1+Shift+e exec phpstorm
+
+
+##
+# WORKSPACES
+#
+
+set $WORKSPACE_TERM       "term"
+  assign [instance="ws_term"] $WORKSPACE_TERM
+  assign [instance="Termite"] $WORKSPACE_TERM
+  bindsym Mod1+1 workspace $WORKSPACE_TERM
+  workspace $WORKSPACE_TERM output HDMI2
+
+set $WORKSPACE_WWW        "www"
+  assign [class="Chromium|Opera|Safari|Explorer|Firefox"] $WORKSPACE_WWW
+  bindsym Mod1+2 workspace $WORKSPACE_WWW
+  workspace $WORKSPACE_WWW output VGA1
+
+set $WORKSPACE_PHPSTORM   "phpstorm"
+  assign [class="jetbrains-phpstorm"] $WORKSPACE_PHPSTORM
+  bindsym Mod1+e workspace $WORKSPACE_PHPSTORM
+  workspace $WORKSPACE_PHPSTORM  output HDMI2
+
+set $WORKSPACE_VIM        "vim"
+  assign [class="[Gg]vim"] $WORKSPACE_VIM
+  bindsym Mod1+t workspace $WORKSPACE_VIM
+  workspace $WORKSPACE_VIM output HDMI2
+
+set $WORKSPACE_GIMP       "gimp"
+  assign [class="Gimp"] $WORKSPACE_GIMP
+  bindsym Mod1+g workspace $WORKSPACE_GIMP
+  workspace $WORKSPACE_GIMP output HDMI2
+
+set $WORKSPACE_SPOTIFY    "spotify"
+  assign [class="Spotify"] $WORKSPACE_SPOTIFY
+  bindsym Mod1+s workspace $WORKSPACE_SPOTIFY
+  workspace $WORKSPACE_SPOTIFY output HDMI2
+
+set $WORKSPACE_MAIL       "mail"
+  assign [class="Thunderbird"] $WORKSPACE_MAIL
+  bindsym Mod1+5 workspace $WORKSPACE_MAIL
+
+set $WORKSPACE_HIPCHAT    "hipchat"
+  assign [class="Thunderbird"] $WORKSPACE_HIPCHAT
+  bindsym Mod1+v workspace $WORKSPACE_HIPCHAT

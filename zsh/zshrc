@@ -1,0 +1,163 @@
+# This came from Greg V's dotfiles:
+#      https://github.com/myfreeweb/dotfiles
+# Feel free to steal it, but attribution is nice
+#
+# thanks:
+# http://selena.deckelmann.usesthis.com/
+# https://github.com/mathiasbynens/dotfiles/blob/master/.functions
+# https://superuser.com/questions/180148/how-do-you-get-screen-to-automatically-connect-to-the-current-ssh-agent-when-re
+# https://github.com/nummi/my-config/blob/master/.zsh/completion.zsh
+# http://robots.thoughtbot.com/silver-searcher-tab-completion-with-exuberant-ctags
+
+# External plugins {{{
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+[[ -z $BASE16_SCHEME ]] && export BASE16_SCHEME=twilight
+local BASE16_SHELL=~/.zsh/base16-shell/base16-$BASE16_SCHEME.dark.sh
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# }}}
+
+# Support for tools, programming languages, etc {{{
+# Less
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[38;5;246m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[04;33;146m'
+export LESS="-R"
+
+# Python
+export PIP_USE_MIRRORS=true
+export PYTHONSTARTUP=~/.pythonrc
+export PYTHONUSERBASE=~ # pip install --user
+
+precmd() {
+	# $? in prompt is wrong, can't pass %? to conditionals
+	if [[ $? == 0 ]]; then SMILEY=')'; else SMILEY='('; fi
+	if [[ $PRIVATE == 1 ]]; then
+		SCOLOR=$bg[magenta]$fg_bold[black]
+	elif [[ ${HOST##*\.} == 'local' || ${HOST##*\.} == 'localdomain' || $HOST =~ '^[^\.]+$' ]]; then
+		# green on *.local, *.localdomain and hostnames without dots
+		SCOLOR=$fg_bold[green]
+	else
+		# red everything else - that is, on production servers!
+		SCOLOR=$fg_bold[red]
+	fi
+}
+# }}}
+
+# Basic settings {{{
+# Modules
+autoload -U colors && colors
+autoload -U compinit && zmodload -i zsh/complist
+autoload -U edit-command-line && zle -N edit-command-line
+autoload -U url-quote-magic && zle -N self-insert url-quote-magic
+autoload -U select-word-style && select-word-style bash
+autoload -U zmv
+zle -N hst
+# Keybindings
+bindkey -e # Emacs style keys in shell
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+bindkey "\e[3~" delete-char # Del
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey '^R' hst
+# Stuff
+setopt pushd_ignore_dups; setopt auto_pushd
+setopt auto_name_dirs; setopt auto_cd
+setopt transient_rprompt; setopt prompt_subst
+setopt no_beep; setopt multios
+setopt extended_glob; setopt interactive_comments
+# History
+setopt hist_ignore_dups; setopt hist_ignore_space
+setopt hist_reduce_blanks; setopt hist_verify
+setopt hist_expire_dups_first; setopt hist_find_no_dups
+setopt share_history; setopt extended_history
+setopt append_history; setopt inc_append_history
+# Completion
+setopt complete_in_word
+setopt no_complete_aliases # Actually: completes aliases! (I guess that means "no ~separate functions~ for aliases")
+unsetopt always_to_end
+zstyle ':completion:*' squeeze-slashes true
+zstyle ':completion:*' insert-tab pending
+zstyle ':completion:*' expand "yes"
+zstyle ':completion:*' matcher-list "m:{a-zA-Z}={A-Za-z}" # ignore case
+zstyle ':completion:*' list-colors ""
+zstyle ':completion:*' menu select=2 _complete _ignored _approximate
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format "- %{${fg[yellow]}%}%d%{${reset_color}%} -"
+zstyle ':completion:*:messages' format $'\e[00;31m%d'
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*:rm:*' ignore-line yes
+zstyle ':completion:*:*:*:processes' list-colors "=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01"
+zstyle ':completion:*:*:*:processes' command "ps -u $(whoami) -o pid,user,comm -w -w"
+zstyle ':completion:*:*:*:*:hosts' list-colors "=*=$color[cyan];$color[bg-black]"
+zstyle ':completion:*:functions' ignored-patterns "_*"
+zstyle ':completion:*:original' list-colors "=*=$color[red];$color[bold]"
+zstyle ':completion:*:parameters' list-colors "=[^a-zA-Z]*=$color[red]"
+zstyle ':completion:*:aliases' list-colors "=*=$color[green]"
+fpath=(~/.zsh/zsh-completions/src(N) /usr/local/share/zsh/site-functions(N) $fpath)
+fignore+=.DS_Store
+compinit -i
+compdef mcd=cd
+_ctagscomp() { (( CURRENT == 2 )) && compadd $(cut -f 1 tags ctags .git/tags tmp/tags 2>/dev/null | grep -v '!_TAG') }
+compdef _ctagscomp ack
+compdef _ctagscomp ag
+compdef _ctagscomp pt
+_loadkeys() { compadd $(find ~/.ssh -perm 0600 ! -type s | xargs basename) }
+compdef _loadkeys loadkeys
+
+HISTFILE=~/.zsh_history
+HISTSIZE=4096
+SAVEHIST=4096
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Like default, but without / -- ^W must be useful in paths, like it is in vim, bash, tcsh
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export CLICOLOR="yes"
+export PAGER="less"
+export EDITOR="vim"
+[[ -e $commands[nvim] ]] && export EDITOR="nvim" && alias vi="nvim"
+
+
+typeset -U path # U for Unique, like a set; (N) == only if exists
+path=(
+	.git/safe/../../bin
+	~/bin(N) ~/.cask/bin(N)
+	$BREWGO/bin(N) $BREWGO/libexec/bin(N) /usr/local/go/bin(N)
+	$JAVA_HOME/bin(N)
+	$RBENV_ROOT/bin(N)
+	/usr/local/share/npm/bin(N)
+	/usr/local/bin /usr/local/sbin $path
+)
+export PATH
+# }}}
+
+# z functions
+fpath=( "$HOME/.zsh/zfunctions" $fpath )
+
+# prompt
+autoload -U promptinit && promptinit
+prompt pure
+
+# k
+source $HOME/.zsh/k/k.sh
+
+# autojump
+source /etc/profile.d/autojump.zsh
+# aliases
+alias paci="pacaur -S $@ --noconfirm --noedit --needed"
+alias pacu="pacaur -Syu --noedit"
+alias pacr="pacaur -R $@"
+alias pacs="pacaur -s $@"
+alias pacl="pacman -Ql $1"
+
+alias l="k"

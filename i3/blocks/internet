@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+label=$1
+
+
+
+if ping -c1 google.com &> /dev/null
+then
+  echo "$label"
+  echo "$label"
+  return 0
+else
+  echo "$label"
+  echo "$label"
+  return 33
+fi
