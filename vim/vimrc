@@ -6,9 +6,6 @@ set nocompatible
 " init plugins
 source ~/.vim/runcoms/neobundle.vim
 
-" custom plugin settings / mappings
-:runtime! ~/.vim/runcoms/bundles/*.vim
-
 " general settings
 source ~/.vim/runcoms/general.vim
 
