@@ -10,8 +10,8 @@
 # http://robots.thoughtbot.com/silver-searcher-tab-completion-with-exuberant-ctags
 
 # External plugins {{{
-source ~/.zsh/zsh-hl/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-hss/zsh-history-substring-search.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 [[ -z $BASE16_SCHEME ]] && export BASE16_SCHEME=twilight
 local BASE16_SHELL=~/.zsh/base16-shell/base16-$BASE16_SCHEME.dark.sh
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL

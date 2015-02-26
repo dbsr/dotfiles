@@ -24,6 +24,9 @@ NeoBundle 'Valloric/YouCompleteMe'
 " snippets
 NeoBundle 'vim-scripts/UltiSnips'
 
+" moar snippets
+NeoBundle 'honza/vim-snippets.git'
+
 " node / js completion
 NeoBundle 'marijnh/tern_for_vim.git'
 
