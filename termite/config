@@ -19,30 +19,34 @@ cursor_shape        = block
 
 
 [colors]
-background = #272822
+foreground      = #a7a7a7
+foreground_bold = #a7a7a7
+cursor          = #a7a7a7
+background      = #1e1e1e
 
-# black
-color0 = #272822
-color8 = #272822
-# red
-color1  = #f92672
-color9  = #ff5995
-# green
-color2  = #46830c
-color10 = #46830c
-# yellow
-color3  = #e6db74
-color11  = #e6db74
-# blue
-color4  = #5f87af
-color12  = #5f87af
-# magenta
-color5  = #f92672
-color13  = #f92672
-# cyan
-color6  = #66d9ef
-color14 = #66d9ef
-# white
-color7  = #ccccc6
+# 16 color space
+color0  = #1e1e1e
+color1  = #cf6a4c
+color2  = #8f9d6a
+color3  = #f9ee98
+color4  = #7587a6
+color5  = #9b859d
+color6  = #afc4db
+color7  = #a7a7a7
+color8  = #5f5a60
+color9  = #cf6a4c
+color10 = #8f9d6a
+color11 = #f9ee98
+color12 = #7587a6
+color13 = #9b859d
+color14 = #afc4db
+color15 = #ffffff
 
-# vim: ft=dosini
+# 256 color space
+color16 = #cda869
+color17 = #9b703f
+color18 = #323537
+color19 = #464b50
+color20 = #838184
+color21 = #c3c3c3
+

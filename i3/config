@@ -6,7 +6,7 @@
 
 font pango:Dejavu Sans Mono for Powerline 10
 
-for_window [class="xbmc|vlc|spotify"] floating
+for_window [class="xbmc|vlc|spotify|Toplevel"] floating
 
 new_window pixel 1
 
