@@ -9,7 +9,7 @@ dynamic_title       = true
 urgent_on_bell      = true
 clickable_url       = true
 allow_bold          = false
-font                = Droid Sans Mono for Powerline 10
+font                = Droid Sans Mono for Powerline 11
 
 scrollback_lines    = 4000
 icon_name           = terminal

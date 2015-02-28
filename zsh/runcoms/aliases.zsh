@@ -7,5 +7,14 @@ alias pacr="pacaur -R $@"
 alias pacs="pacaur -s $@"
 alias pacl="pacman -Ql $1"
 
-# various
+# sysemctl
+alias sstart="sudo systemctl start $@"
+alias sstop="sudo systemctl stop $@"
+alias senable="sudo systemctl enable $@"
+alias sdisable="sudo systemctl disable $@"
+alias sstatus="sudo systemctl status $@"
+
+# general
 alias l="k"
+alias c="c"
+alias e=kungvim

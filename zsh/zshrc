@@ -3,6 +3,7 @@
 
 # #
 # Runcoms
+
 . $HOME/.zsh/runcoms/modules.zsh
 . $HOME/.zsh/runcoms/opts.zsh
 . $HOME/.zsh/runcoms/path.zsh
@@ -10,6 +11,7 @@
 . $HOME/.zsh/runcoms/history.zsh
 . $HOME/.zsh/runcoms/exports.zsh
 . $HOME/.zsh/runcoms/keybindings.zsh
+. $HOME/.zsh/runcoms/zfunctions.zsh
 
 # #
 # Plugins

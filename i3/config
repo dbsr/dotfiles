@@ -81,6 +81,11 @@ bindsym Mod1+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym Mod1+Shift+r restart
 
+bindsym Mod1+j focus up
+bindsym Mod1+Ctrl+j focus left
+bindsym Mod1+k focus down 
+bindsym Mod1+Ctrl+k focus right
+
 # EXECS
 
 # terminal
@@ -126,7 +131,7 @@ set $WORKSPACE_PHPSTORM   "phpstorm"
   workspace $WORKSPACE_PHPSTORM  output HDMI2
 
 set $WORKSPACE_VIM        "vim"
-  assign [class="[Gg]vim"] $WORKSPACE_VIM
+  assign [instance="VIM"] $WORKSPACE_VIM
   bindsym Mod1+t workspace $WORKSPACE_VIM
   workspace $WORKSPACE_VIM output HDMI2
 

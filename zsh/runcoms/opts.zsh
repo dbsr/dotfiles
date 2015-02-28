@@ -14,11 +14,6 @@ setopt hist_expire_dups_first; setopt hist_find_no_dups
 setopt share_history; setopt extended_history
 setopt append_history; setopt inc_append_history
 
-HISTSIZE=4096
-SAVEHIST=4096
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Like default, but without / -- ^W must be useful in paths, like it is in vim, bash, tcsh
-
 # Completion
 setopt complete_in_word
 setopt no_complete_aliases # Actually: completes aliases! (I guess that means "no ~separate functions~ for aliases")
