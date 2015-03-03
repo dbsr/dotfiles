@@ -39,9 +39,13 @@ def create_symlinks(files, basedir):
                         continue
         
         if os.path.exists(path_dest):
-            if not os.path.realpath(path_dest) == path_src or not os.path.islink(path_dest):
-                print "warning target exists and is not ours: {}".format(path_dest)
-            continue
+	    if os.path.islink(path_dest):
+	        try:
+		    print path_dest
+   	            shutil.rmtree(path_dest)
+ 		except:
+		    print -1
+            	    continue
         try: 
             os.symlink(path_src, path_dest)
         except OSError as e:

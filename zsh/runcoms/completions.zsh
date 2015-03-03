@@ -37,3 +37,6 @@ compdef _ctagscomp ag
 compdef _ctagscomp pt
 _loadkeys() { compadd $(find ~/.ssh -perm 0600 ! -type s | xargs basename) }
 compdef _loadkeys loadkeys
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>' # Like default, but without / -- ^W must be useful in paths, like it is in vim, bash, tcsh
