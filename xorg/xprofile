@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# no moar beeps
+xset -b &> /dev/null
+
+# caps <> escape
+setxkbmap -option caps:escape &> /dev/null
+
+# load connman-ui
+connman-ui-gtk &
+
+redshift-gtk &

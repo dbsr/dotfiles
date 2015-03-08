@@ -3,11 +3,14 @@
     "zsh": ".zsh",
     "i3": ".config/i3",
     "vim": ".vim",
-    "termite": ".config/termite"
+    "termite": ".config/termite",
+    "vimperator": ".vimperator",
+    "xorg/xprofile": ".xprofile"
   },
   "~": {
     ".zsh/zshrc": ".zshrc",
     ".zsh/pure/pure.zsh": ".zsh/zfunctions/prompt_pure_setup",
-    ".vim/vimrc": ".vimrc"
+    ".vim/vimrc": ".vimrc",
+    ".vimperator/vimperatorrc": ".vimperatorrc"
   }
 }

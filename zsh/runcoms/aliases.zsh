@@ -10,7 +10,9 @@ alias pacl="pacman -Ql $1"
 # sysemctl
 alias sstart="sudo systemctl start $@"
 alias sstop="sudo systemctl stop $@"
+alias srestart="sudo systemctl restart $@"
 alias senable="sudo systemctl enable $@"
+
 alias sdisable="sudo systemctl disable $@"
 alias sstatus="sudo systemctl status $@"
 

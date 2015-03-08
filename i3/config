@@ -109,6 +109,8 @@ bindsym Mod1+Shift+e exec phpstorm
 # hipchat
 bindsym Mod1+Shift+v exec hipchat
 
+bindsym Mod1+Shift+9 exec sh $HOME/.screenlayout/asd.sh
+
 
 ##
 # WORKSPACES
@@ -150,5 +152,5 @@ set $WORKSPACE_MAIL       "mail"
   bindsym Mod1+5 workspace $WORKSPACE_MAIL
 
 set $WORKSPACE_HIPCHAT    "hipchat"
-  assign [class="Thunderbird"] $WORKSPACE_HIPCHAT
+  assign [instance="hipchat"] $WORKSPACE_HIPCHAT
   bindsym Mod1+v workspace $WORKSPACE_HIPCHAT
