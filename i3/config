@@ -24,8 +24,8 @@ client.focused          $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY     $COLOR_FG_PRIMAR
 
 bar {
   font pango:Dejavu Sans Mono for Powerline, FontAwesome 10
-  #status_command i3blocks -c $HOME/.config/i3/i3blocks.conf -d $HOME/.config/i3/blocks
-  status_command i3blocks 
+  status_command i3blocks -c $HOME/.config/i3/i3blocks_lap.conf
+  #status_command i3blocks -
   position top
     colors {
     background $COLOR_BG_PRIMARY
