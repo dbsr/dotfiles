@@ -24,7 +24,7 @@ client.focused          $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY     $COLOR_FG_PRIMAR
 
 bar {
   font pango:Dejavu Sans Mono for Powerline, FontAwesome 10
-  status_command i3blocks -c $HOME/.config/i3/i3blocks_lap.conf
+  status_command i3blocks
   #status_command i3blocks -
   position top
     colors {
@@ -111,6 +111,7 @@ bindsym Mod1+Shift+v exec hipchat
 
 bindsym Mod1+Shift+9 exec sh $HOME/.screenlayout/asd.sh
 
+bindsym Mod1+Shift+0 exec i3-input -l 2 -F 'workspace %s'
 
 ##
 # WORKSPACES

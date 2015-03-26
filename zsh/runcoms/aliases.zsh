@@ -4,7 +4,7 @@
 alias paci="pacaur -S $@ --noconfirm --noedit --needed"
 alias pacu="pacaur -Syu --noedit"
 alias pacr="pacaur -R $@"
-alias pacs="pacaur -s $@"
+alias pacs="pacaur -Ss $@"
 alias pacl="pacman -Ql $1"
 
 # sysemctl
