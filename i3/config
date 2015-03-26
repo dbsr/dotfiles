@@ -111,9 +111,9 @@ bindsym Mod1+Shift+v exec hipchat
 
 bindsym Mod1+Shift+9 exec sh $HOME/.screenlayout/asd.sh
 
-bindsym Ctrl+Shift+w exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py move_to_temp_workspace
-bindsym Mod1+Shift+w exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py move_to_workspace
-bindsym Mod1+Shift+m exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py go_to_workspace 
+bindsym Ctrl+Shift+w exec python2 $HOME/.config/i3/i3-my-py/workspace_on_the_fly.py move_to_temp_workspace
+bindsym Mod1+Shift+w exec python2 $HOME/.config/i3/i3-my-py/workspace_on_the_fly.py move_to_workspace
+bindsym Mod1+Shift+m exec python2 $HOME/.config/i3/i3-my-py/workspace_on_the_fly.py go_to_workspace 
 
 ##
 # WORKSPACES
