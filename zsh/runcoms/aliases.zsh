@@ -20,3 +20,19 @@ alias sstatus="sudo systemctl status $@"
 alias l="k"
 alias c="c"
 alias e=kungvim
+
+# python
+alias mkvirtualenv='mkvirtualenv --python=/usr/bin/python2'
+
+function resetDns() {
+  DNS=54.94.175.250
+  RESOLVECONF=/etc/resolv.conf
+  if [[ -z $(cat $RESOLVECONF|grep $DNS) ]]
+  then
+    sudo zsh -c "echo '#$DNS' >> $RESOLVECONF"
+  fi
+  sudoedit $RESOLVECONF
+  sudo ip link set enp3s0 down
+  sudo ip link set enp3s0 up
+
+}
