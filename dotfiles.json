@@ -5,7 +5,8 @@
     "vim": ".vim",
     "termite": ".config/termite",
     "vimperator": ".vimperator",
-    "xorg/xprofile": ".xprofile"
+    "xorg/xprofile": ".xprofile",
+    "pacaur": ".config/pacaur"
   },
   "~": {
     ".zsh/zshrc": ".zshrc",

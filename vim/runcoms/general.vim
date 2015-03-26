@@ -17,9 +17,8 @@ set nobackup
 set nowb
 
 " persistent undo
-silent !mkdir ~/.vim/undo > /dev/null 2>&1
-set undodir=~/vim/undo
 set undofile
+set undodir=$HOME/.vim/undo
 
 " indentation
 set autoindent

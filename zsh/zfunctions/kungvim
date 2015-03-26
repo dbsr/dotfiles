@@ -4,7 +4,7 @@
 # stat vim server if not running
 if [[ -z $(pgrep vim) ]]
 then
-  termite -e "vim --servername VIM --remote-tab-silent $@" --name "VIM" &> /dev/null &
+  nohup termite -e "vim --servername VIM --remote-tab-silent $@" --name "VIM" &> /dev/null &
 else
   vim --servername VIM --remote-tab-silent $@
 fi

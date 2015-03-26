@@ -12,5 +12,8 @@ source ~/.vim/runcoms/general.vim
 " gui
 source ~/.vim/runcoms/gui.vim
 
+" autocommands
+source ~/.vim/runcoms/autocommands.vim
+
 " and mappings
 source ~/.vim/runcoms/mappings.vim

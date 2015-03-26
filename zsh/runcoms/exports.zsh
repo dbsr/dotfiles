@@ -20,3 +20,6 @@ export LESS="-R"
 export PIP_USE_MIRRORS=true
 export PYTHONSTARTUP=~/.pythonrc
 export PYTHONUSERBASE=~ # pip install --user
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+

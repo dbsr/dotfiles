@@ -24,7 +24,7 @@ client.focused          $COLOR_FG_PRIMARY $COLOR_BG_PRIMARY     $COLOR_FG_PRIMAR
 
 bar {
   font pango:Dejavu Sans Mono for Powerline, FontAwesome 10
-  status_command i3blocks -c $HOME/.config/i3/i3blocks_lap.conf
+  status_command i3blocks -c $HOME/.config/i3/i3blocks.local.conf
   #status_command i3blocks -
   position top
     colors {
@@ -111,6 +111,9 @@ bindsym Mod1+Shift+v exec hipchat
 
 bindsym Mod1+Shift+9 exec sh $HOME/.screenlayout/asd.sh
 
+bindsym Ctrl+Shift+w exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py move_to_temp_workspace
+bindsym Mod1+Shift+w exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py move_to_workspace
+bindsym Mod1+Shift+m exec python2 $HOME/src/i3-my-py/workspace_on_the_fly.py go_to_workspace 
 
 ##
 # WORKSPACES
